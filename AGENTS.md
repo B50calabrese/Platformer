@@ -10,6 +10,13 @@ A game similar to RoguelikeCardgame, built on top of the GameEngine.
   - `libs/GameEngine`: The core game engine.
 - `assets/`: Game assets like textures, sounds, and fonts.
 
+## Current Project Status
+
+- **Scenes Implementation**:
+  - Basic scene skeleton established in `include/scenes/` and `src/scenes/`.
+  - Available scenes: `MainMenuScene`, `LevelSelectScene`, and `LevelScene`.
+  - `MainMenuScene` is the initial scene set in `src/main.cpp`.
+
 ## Coding Standards
 
 This project follows the **Google C++ Style Guide**.
