@@ -32,6 +32,9 @@ int main(int argc, char** argv) {
   config.window_title = "Platformer";
   config.window_width = 1280;
   config.window_height = 720;
+#ifdef ASSETS_PATH
+  config.asset_path = ASSETS_PATH;
+#endif
 
   engine::Engine::Init(config);
   PlatformerApp app;

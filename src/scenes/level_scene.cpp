@@ -4,10 +4,11 @@
 
 namespace platformer {
 
-LevelScene::LevelScene() : engine::Scene("LevelScene") {}
+LevelScene::LevelScene(int level_index)
+    : engine::Scene("LevelScene"), level_index_(level_index) {}
 
 void LevelScene::OnAttach() {
-  LOG_INFO("LevelScene Attached");
+  LOG_INFO("LevelScene Attached - Level %d", level_index_);
 }
 
 void LevelScene::OnDetach() {

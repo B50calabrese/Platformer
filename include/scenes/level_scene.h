@@ -10,13 +10,16 @@ namespace platformer {
  */
 class LevelScene : public engine::Scene {
  public:
-  LevelScene();
+  explicit LevelScene(int level_index = 1);
   ~LevelScene() override = default;
 
   void OnAttach() override;
   void OnDetach() override;
   void OnUpdate(float delta_time_seconds) override;
   void OnRender() override;
+
+ private:
+  int level_index_;
 };
 
 }  // namespace platformer
