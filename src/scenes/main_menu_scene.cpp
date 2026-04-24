@@ -75,7 +75,7 @@ void MainMenuScene::OnAttach() {
                         quad.color = hovered ? kButtonHoverColor : kButtonColor;
                       }
                     }});
-    engine::ecs::components::Quad button_quad{kButtonColor, {0, 0}, 110,
+    engine::ecs::components::Quad button_quad{kButtonColor, {0, 0}, 110.0f,
                                               kButtonRoundness,
                                               kButtonBorderThickness,
                                               kButtonBorderColor};

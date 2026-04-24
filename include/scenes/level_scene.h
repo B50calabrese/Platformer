@@ -1,7 +1,10 @@
 #ifndef INCLUDE_SCENES_LEVEL_SCENE_H_
 #define INCLUDE_SCENES_LEVEL_SCENE_H_
 
+#include <engine/ecs/entity_manager.h>
 #include <engine/scene/scene.h>
+
+#include "util/level_config.h"
 
 namespace platformer {
 
@@ -20,6 +23,11 @@ class LevelScene : public engine::Scene {
 
  private:
   int level_index_;
+  engine::ecs::EntityID player_entity_ = 0;
+  bool is_level_loaded_ = false;
+  bool level_complete_ = false;
+
+  LevelConfig config_;
 };
 
 }  // namespace platformer
