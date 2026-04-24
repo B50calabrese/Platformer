@@ -1,0 +1,19 @@
+Name: The Beginning
+Number: 1
+Gravity: 1800
+Acceleration: 2500
+Deceleration: 3000
+MaxSpeed: 500
+JumpForce: 750
+Width: 20
+Height: 10
+####################
+#                  #
+#                  #
+#     G            #
+#    ####          #
+#                  #
+#          ####    #
+#  P               #
+####################
+####################
