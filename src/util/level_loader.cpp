@@ -9,7 +9,7 @@
 #include <engine/ecs/components/camera_component.h>
 #include <engine/ecs/components/collider.h>
 #include <engine/ecs/components/gravity.h>
-#include <engine/ecs/components/quad.h>
+#include <engine/ecs/components/sprite.h>
 #include <engine/ecs/components/transform.h>
 #include <engine/ecs/components/velocity.h>
 #include <engine/graphics/renderer.h>
@@ -83,9 +83,15 @@ bool LevelLoader::Load(int level_index, engine::ecs::Registry* registry,
             *player_entity, engine::ecs::components::Velocity{});
         registry->AddComponent<engine::ecs::components::Gravity>(
             *player_entity, engine::ecs::components::Gravity{config->gravity});
-        registry->AddComponent<engine::ecs::components::Quad>(
-            *player_entity, engine::ecs::components::Quad{
-                                kPlayerColor, {0, 0}, 20.0f, kPlayerRoundness});
+        registry->AddComponent<engine::ecs::components::Sprite>(
+            *player_entity,
+            engine::ecs::components::Sprite{
+                "",
+                "textures/pixel_adventure/Main Characters/Mask Dude/Idle.png:32:32:1:11",
+                0,
+                {1.0f, 1.0f, 1.0f, 1.0f},
+                {0.5f, 0.5f},
+                20.0f});
         registry->AddComponent<engine::ecs::components::Collider>(
             *player_entity,
             engine::ecs::components::Collider{{kTileSize, kTileSize}});
@@ -108,14 +114,14 @@ bool LevelLoader::Load(int level_index, engine::ecs::Registry* registry,
         registry->AddComponent<engine::ecs::components::Transform>(
             platform,
             engine::ecs::components::Transform{pos, {kTileSize, kTileSize}});
-        registry->AddComponent<engine::ecs::components::Quad>(
+        registry->AddComponent<engine::ecs::components::Sprite>(
             platform,
-            engine::ecs::components::Quad{kPlatformColor,
-                                          {0, 0},
-                                          10.0f,
-                                          0.0f,
-                                          kPlatformThickness,
-                                          kPlatformBorderColor});
+            engine::ecs::components::Sprite{
+                "", "textures/pixel_adventure/Terrain/Terrain.png:16:16:11:22",
+                6,  // Grass top-middle tile in the sheet
+                {1.0f, 1.0f, 1.0f, 1.0f},
+                {0.0f, 0.0f},
+                10.0f});
         registry->AddComponent<engine::ecs::components::Collider>(
             platform, engine::ecs::components::Collider{
                           {kTileSize, kTileSize}, {0, 0}, true});
@@ -124,12 +130,18 @@ bool LevelLoader::Load(int level_index, engine::ecs::Registry* registry,
         registry->AddComponent<engine::ecs::components::Transform>(
             goal,
             engine::ecs::components::Transform{pos, {kTileSize, kTileSize}});
-        registry->AddComponent<engine::ecs::components::Quad>(
-            goal, engine::ecs::components::Quad{
-                      kGoalColor, {0, 0}, 15.0f, kGoalRoundness});
+        registry->AddComponent<engine::ecs::components::Sprite>(
+            goal, engine::ecs::components::Sprite{
+                      "",
+                      "textures/pixel_adventure/Items/Checkpoints/End/"
+                      "End.png:64:64:1:1",
+                      0,
+                      {1.0f, 1.0f, 1.0f, 1.0f},
+                      {0.5f, 0.5f},
+                      15.0f});
         registry->AddComponent<engine::ecs::components::Collider>(
             goal, engine::ecs::components::Collider{
-                      {kTileSize, kTileSize}, {0, 0}, true, true});
+                      {kTileSize * 0.8f, kTileSize * 0.8f}, {kTileSize * 0.1f, kTileSize * 0.1f}, true, true});
       }
     }
   }

@@ -75,18 +75,13 @@ void MainMenuScene::OnAttach() {
                         quad.color = hovered ? kButtonHoverColor : kButtonColor;
                       }
                     }});
-    engine::ecs::components::Quad button_quad{kButtonColor, {0, 0}, 110.0f,
-                                              kButtonRoundness,
-                                              kButtonBorderThickness,
-                                              kButtonBorderColor};
+    engine::ecs::components::Quad button_quad{kButtonColor, {0, 0}, 110.0f};
     registry_.AddComponent<engine::ecs::components::Quad>(button, button_quad);
 
     auto text_ent = registry_.CreateEntity();
     // Center text in button
     float text_scale = 1.2f;
-    float text_width = engine::graphics::TextRenderer::Get().GetTextWidth(
-        "default", label, text_scale);
-    float text_x = (button_width - text_width) / 2.0f;
+    float text_x = button_width * 0.1f;    // Simple padding
     float text_y = button_height * 0.35f;  // Visual center for text
 
     registry_.AddComponent<engine::ui::UITransform>(
