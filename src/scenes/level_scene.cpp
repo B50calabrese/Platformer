@@ -10,7 +10,7 @@
 #include <engine/ecs/components/camera_component.h>
 #include <engine/ecs/components/collider.h>
 #include <engine/ecs/components/gravity.h>
-#include <engine/ecs/components/quad.h>
+#include <engine/ecs/components/sprite.h>
 #include <engine/ecs/components/transform.h>
 #include <engine/ecs/components/velocity.h>
 #include <engine/ecs/systems/camera_system.h>
@@ -38,8 +38,10 @@ void LevelScene::OnAttach() {
   engine::ecs::EntityID bg = registry_.CreateEntity();
   registry_.AddComponent<engine::ecs::components::Transform>(
       bg, engine::ecs::components::Transform{{-5000, -5000}, {10000, 10000}});
-  registry_.AddComponent<engine::ecs::components::Quad>(
-      bg, engine::ecs::components::Quad{kBgColor, {0, 0}, -100.0f});
+  registry_.AddComponent<engine::ecs::components::Sprite>(
+      bg, engine::ecs::components::Sprite{
+              "textures/pixel_adventure/Background/Blue.png", "", 0,
+              {1.0f, 1.0f, 1.0f, 1.0f}, {0, 0}, -100.0f});
 
   if (LevelLoader::Load(level_index_, &registry_, &config_, &player_entity_)) {
     is_level_loaded_ = true;
